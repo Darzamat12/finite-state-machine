@@ -1,32 +1,51 @@
+const events={
+    'study':'busy',
+    'get_tired':'sleeping',
+    'get_hungry':'hungry',
+    'eat':'normal',
+    'get_up':'normal',
+}
+
 class FSM {
     /**
      * Creates new FSM instance.
      * @param config
      */
-    constructor(config) {}
+    constructor(config) {
+        this.activeState=config.initial;
+
+    }
 
     /**
      * Returns active state.
      * @returns {String}
      */
-    getState() {}
+    getState() {
+        return this.activeState;
+    }
 
     /**
      * Goes to specified state.
      * @param state
      */
-    changeState(state) {}
+    changeState(state) {
+        this.activeState=state;
+    }
 
     /**
      * Changes state according to event transition rules.
      * @param event
      */
-    trigger(event) {}
+    trigger(event) {
+        this.activeState=events[event];
+    }
 
     /**
      * Resets FSM state to initial.
      */
-    reset() {}
+    reset() {
+        this.activeState=config.initial;
+    }
 
     /**
      * Returns an array of states for which there are specified event transition rules.
